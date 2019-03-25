@@ -1,0 +1,42 @@
+<include file="EFuliIndex:Efuliheader"/>
+   
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="swiper-container swiper-container-horizontal">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="__PUBLIC__/newEfuli/img/banner.jpg" alt=""></div>
+                        <div class="swiper-slide">
+                            <img src="__PUBLIC__/newEfuli/img/banner.jpg" alt=""></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row" id="typeImg" style="margin-top: 5px;">
+            <volist name="data" id ="vo">
+                <div class="wrap" onclick="window.location.href='__APP__/Intel/EFuliPay<php>echo ('?'.$_SERVER['QUERY_STRING'].'&SysNo=');</php><{$vo.SysNo}>'">
+                    <!--<div class="wrap" onclick="window.location.href=<php>echo ('http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'].'&SysNo=');</php><{$vo.SysNo}>">-->
+                    <div class="col-xs-12 pay">
+                        <div class="stamp">
+                            <div class="par">
+                                <div class="pad">
+                                    <sub class="sign">￥</sub>
+                                    <span><{$vo.Money}></span>
+                                    <sub>支付宝现金券</sub>
+                                </div>
+                                <p>单笔交易满<{$vo.Money}>元使用</p>
+                                <p>有效期：兑换之日起 90 天内</p>
+                            </div>
+                            <div class="copy"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 clearfix">
+                        <p class="price">售价：<span>￥ <{$vo.Field_One}></span></p>
+                    </div>
+                    <input type="hidden" value="<{$vo.SysNo}>">
+                </div>
+            </volist>
+        </div>
+        <include file="EFuliIndex:Efulifooter"/>

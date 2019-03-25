@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html class="nonepadding" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no,minimal-ui">
+    <link rel="stylesheet" href="__PUBLIC__/newEfuli/css/babel.css">
+    <link rel="stylesheet" href="__PUBLIC__/newEfuli/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/newEfuli/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/newEfuli/css/swiper.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/newEfuli/css/pay.css">
+	<script src="__PUBLIC__/assets/js/jquery-2.0.3.min.js"></script>
+	<script src="__PUBLIC__/newEfuli/js/jquery.validate.min.js"></script>
+	<script src="__PUBLIC__/assets/js/bootstrap.min.js"></script>
+
+</head>
+<body class="nonepadding">
+<div class="container">
+    <div class="row">
+        <div class="col-xs-2 backIcon">
+            <a href="javascript:history.go(-1)" title=""><img src="__PUBLIC__/newEfuli/img/backIcon.png" alt="" class="backIndex"></a>
+        </div>
+        <div class="col-xs-10 titlePar">
+            <h5 class="titleCenter">商品详情</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 line"></div>
+    </div>
+    <div class="row" id="payWrap">
+        <div class="wrap">
+            <div class="col-xs-12">
+                <div class="stamp">
+                    <div class="par">
+                        <div class="pad">
+                            <sub class="sign">￥</sub>
+                            <span><{$data[0]['Money']}></span>
+                            <sub>支付宝现金券</sub>
+                        </div>
+                        <p>单笔交易满<i class="moneyShow"><{$data[0]['Money']}></i>元使用</p>
+                        <p>有效期：兑换之日起 90 天内</p>
+                    </div>
+                    <div class="copy payCopy">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 clearfix">
+                <div class="col-xs-12 detailsPrice">
+                    <p class="price">售价：<span>￥ <{$data[0]['Field_One']}></span></p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-xs-12 line"></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="explainList">
+                <li>1、本券仅限在支付宝线下签约商家（个人收款码及转账除外）及部分线上APP使用支付宝付款时（包含出示付款码、扫码付、支付宝付款）实付金额大于券面金额时自动抵扣。</li>
+                <li>2、在线上APP使用支付宝付款时，须关闭免密支付，本券方可被抵扣。</li>
+                <li>3、本券仅限用于消费抵扣，不得提现，不得转增，不可拆分使用。</li>
+                <li>4、本券每笔交易限使用1张。在您绑定了多张券的情况下，支付系统将自动优先选择最大券面额进行抵扣</li>
+                <li>5、本券自激活之日起90日内使用有效。</li>
+                <li>6、使用该券后发生的退款，本券不自动退还。可通过可通过可通过可通过 <a href="https://jinshuju.net/f/3tNcz9">https://jinshuju.net/f/3tNcz9</a> 在线申请在线申请在线申请在线申请请退券。</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 line"></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 nowBuy">
+            <php>if($data['Left_Count']<=0){</php>
+            <a  class="btn btn-danger " disabled="disabled">库存不足</a>
+            <php>}else{</php>
+            <button  class="btn btn-danger btn-lg" >立即购买</button>
+            <php>}</php>
+        </div>
+    </div>
+    <div class="clearfix">
+    </div>
+    <div class="cotainer-fluid">
+        <div class="row">
+            <div class="bg"></div>
+            <div class="payBg">
+                <div class="row">
+                    <div class="col-xs-12 closePath">
+                        <img src="__PUBLIC__/newEfuli/img/closeIcon.png" alt="" class="cover">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 clearfix">
+                        <div class="col-xs-4" id="payIcon">
+                            <img src="__PUBLIC__/newEfuli/img/payBgIcon.png" alt="">
+                        </div>
+                        <div class="col-xs-8" id="payText">
+                            <p>支付宝<span><{$data[0]['Money']}></span>元现金券</p>
+                            <p>库存 <span class="count"><{$data['Left_Count']}></span> 件</p>
+                            <p class="payPrice">￥ <span><{$data[0]['Field_One']}></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="payBgLine"></div>
+                <div class="row">
+                    <div class="col-xs-4 col-sm-3 text-center payTitle">
+                        <p>购买数量</p>
+                    </div>
+                    <div class="col-xs-8 col-sm-9" id="total">
+                        <button class="btn btn-sm btn-default" id="reduce">-</button>
+                        <span class="payCount"> 1 </span>
+                        <button class="btn btn-sm btn-default" id="add">+</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 payTips">
+                        <p>限购 5 张</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <button class="payBtn">支付（合计：<span class="allMoney">¥ 0.00 元</span>）</button>
+                    </div>
+                </div>
+            </div>
+            <div class="payInfo">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h4 class="text-center buyinfo">
+                            输入购买信息
+                        </h4>
+                        <img src="__PUBLIC__/newEfuli/img/closeIcon.png" alt="" class="cover formCover">
+                        <img src="" alt="">
+                    </div>
+
+                </div>
+                <div class="row">
+                    <form class="form-horizontal" id="fromSubmit">
+                        <div class="form-group">
+                            <label for="userName" class="col-xs-5 col-sm-2 control-label ">请输入真实姓名</label>
+                            <div class="col-xs-7 col-sm-10 public">
+                                <input type="text" class="form-control" id="userName" name="userName" placeholder="请输入真实姓名">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="tel" class="col-xs-5 col-sm-2 control-label ">请输入手机号码</label>
+                            <div class="col-xs-7 col-sm-10 public">
+                                <input type="text" class="form-control" id="tel" name="tel" placeholder="请输入手机号码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkTelephone" class="col-xs-5 col-sm-2 control-label ">请确认手机号码</label>
+                            <div class="col-xs-7 col-sm-10 public">
+                                <input type="text" class="form-control" id="checkTelephone" name="checkTelephone" placeholder="请确认手机号码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 col-sm-12" id="btnSubmit">
+                                <button type="submit" id="submit" class="btn btn-danger btn-lg">支付（合计：<span class="allMoney">¥ 0.00 元</span>）</button>
+                            </div>
+                        </div>
+                        <input type = 'hidden' id = 'PayType' value = '<{$PayType}>'>
+                        <input type = 'hidden' id = 'userid' value = '<{$userid}>'>
+                        <input type = 'hidden' id = 'systemUserSysNo' value = '<{$systemUserSysNo}>'>
+                        <input type = 'hidden' id = 'CustomersTopSysNo' value = '<{$CustomersTopSysNo}>'>
+                        <input type = 'hidden' id = 'Switch' value = '<{$Switch}>'>
+                        <input type = 'hidden' id = 'amount' value = ''>
+                        <input type = 'hidden' id = 'cashVoucher' value = "<{$_GET['SysNo']}>">
+                        <input type = 'hidden' id = 'cashAmount' value = "<{$data[0]['Field_One']}>">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+<div class="circle-box"><div class="circle_animate"><div class="circle"></div><p>加载中...</p></div></div>
+
+ <div class="pop_wrapper"><div class="pop_outer"><div class="pop_cont"><div class="pop_tip">123123123</div><p class="pop_border pop_b_top"><span class="pop_wbtn">我知道了</span></p></div></div></div>
+<script !src="">
+
+$(".pop_wbtn").click(function (){
+$(".pop_wrapper").hide();
+})
+</script>
+<script !src="">
+    //重置
+    function ClearInput() {
+
+        var validator = $("#fromSubmit").validate({
+            submitHandler: function (form) {
+                form.submit();
+            }
+        });
+
+        validator.resetForm();
+
+    }
+</script>
+<script !src="">
+	
+    /*
+     *乘法函数，用来得到精确的乘法结果
+     *说明：javascript的乘法结果会有误差，在两个浮点数相乘的时候会比较明显。这个函数返回较为精确的乘法结果。
+     *调用：accMul(arg1,arg2)
+     *返回值：arg1乘以arg2的精确结果
+     */
+    function accMul(arg1,arg2)
+    {
+        var m=0,s1=arg1.toString(),s2=arg2.toString();
+        try{m+=s1.split(".")[1].length}catch(e){}
+        try{m+=s2.split(".")[1].length}catch(e){}
+        var amount =  Number(s1.replace(".",""))*Number(s2.replace(".",""))/Math.pow(10,m)
+        $('.allMoney').text('¥' + amount + '元');
+        $('#amount').val(amount);
+
+    }
+
+    //给Number类型增加一个mul方法，调用起来更加方便。
+    Number.prototype.mul = function (arg){
+        return accMul(arg, this);
+    }
+
+    $(function () {
+        var Payspan = $('.payPrice span').text();
+        var NumMoney = Number(Payspan);
+        var LastMoney = NumMoney.toFixed(2);
+        $('.allMoney').text('¥' + 1*LastMoney + '元');
+		$('#amount').val(1*LastMoney);
+        let count = Number($('.payCount').text());
+//        $('.pad').find('span').text(JSON.parse(localStorage.getItem('price')))
+//        $('.moneyShow').text(JSON.parse(localStorage.getItem('price')))
+        $('.nowBuy .btn').on('click',function () {
+            $('.bg').show()
+            $('.payBg').slideDown(300)
+        })
+
+        $('.cover').on('click',function () {
+            $('.bg').hide()
+            $('.payBg').slideUp(300);
+            $('.payInfo').fadeOut(300);
+            $('#fromSubmit .form-group').removeClass('has-error has-info')
+            $('#fromSubmit .form-group input').val('')
+            ClearInput()
+        })
+
+        //减数量
+        $('#reduce').on('click',function () {
+            if(count <= 1){
+                count == 1;
+            }else{
+                count--;
+            }
+            $('.payCount').text(count);
+            var moneyCount = accMul(count, LastMoney);
+        });
+
+        //增数量
+        $('#add').on('click',function () {
+            var totalStock = parseInt($('.count').text())>5?5:parseInt($('.count').text());
+
+            if(count>=totalStock){
+                count==totalStock;
+            }else{
+                count++;
+            }
+            $('.payCount').text(count);
+            var moneyCount = accMul(count, LastMoney);
+        })
+
+        $('.payBtn').on('click',function () {
+            $('.payBg').slideUp(300);
+            $('.payInfo').slideDown(300)
+        })
+
+    })
+</script>
+<script !src="">
+
+$(".pop_wrapper").hide();
+
+$('.circle-box').hide();
+	var submitAble = true;
+    $('#fromSubmit').validate({
+
+        errorElement: 'div',
+
+        errorClass: 'help-block',
+
+        focusInvalid: false,
+
+        rules: {
+            userName:{required: true, chinese: true},
+            tel:{required: true, mobile: true},
+            checkTelephone:{required: true, mobile: true, equalTo: '#tel'}
+        },
+
+        messages: {
+            userName:{required: '请输入姓名.', chinese: '请输入正确格式的姓名.'},
+            tel:{required: '请输入手机号码.', mobile: '请输入正确格式的手机号码.'},
+            checkTelephone: {required: '请再次填写手机号码.', mobile: '请输入正确格式的手机号码', equalTo: '两次输入的手机号码不一致.'}
+        },
+
+
+        highlight: function (e) {
+            console.log(e)
+            $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+
+        },
+
+        success: function (e) {
+
+            $(e).closest('.form-group').removeClass('has-error').addClass('has-info');
+
+            $(e).remove();
+
+        },
+
+        errorPlacement: function (error, element) {
+            error.insertAfter(element.parent())
+        },
+
+        submitHandler: function (form) {
+			if(!submitAble){
+					return;
+				}
+				$("#submit").attr("disabled","disabled");
+				$('.circle-box').show();
+
+				submitAble = false;
+            $.ajax({
+
+                type: "post",
+
+                url: "__APP__/Intels/EFuliPay",
+
+                data: {
+                    count:  parseInt($('.payCount').text()),
+                    userName: $('#userName').val(),
+                    cashVoucher: $('#cashVoucher').val(),
+                    telephone: $('#tel').val(),
+                    PayType: $('#PayType').val(),
+                    userid: $('#userid').val(),
+                    amount: $('#amount').val(),
+                    cashAmount: $('#cashAmount').val(),
+                    CustomersTopSysNo: $('#CustomersTopSysNo').val(),
+                    Switch: $('#Switch').val(),
+                    systemUserSysNo: $('#systemUserSysNo').val()
+                },
+
+
+                success: function (response) {
+				if(response.Code==0){
+                            var payInfo = response['PayInfo'];
+                        <php>if( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false ){</php>
+                            WeixinJSBridge.invoke('getBrandWCPayRequest',{
+                                "appId": payInfo.appId, //公众号名称，由商户传入
+                                "timeStamp": payInfo.timeStamp, //时间戳，自1970 年以来的秒数
+                                "nonceStr": payInfo.nonceStr, //随机串
+                                "package": payInfo.package,
+                                "signType": payInfo.signType, //微信签名方式:
+                                "paySign": payInfo.paySign//微信签名,
+                            },function(res){
+                                if (res.err_msg == "get_brand_wcpay_request:ok") {
+                                    // 此处可以使用此方式判断前端返回,微信团队郑重提示：res.err_msg 将在用户支付成功后返回ok，但并不保证它绝对可靠。
+                                    if(response['Ad_Info']['Switch']==0){
+                                        location.href ="<php>echo C('AD_HOST');</php>";
+
+                                    }else{
+                                        WeixinJSBridge.call( 'closeWindow' );
+                                    }
+                                }else{
+                                    WeixinJSBridge.call( 'closeWindow' );
+                                }
+                            });
+                            <php>}</php>
+                            <php>if ( strpos($_SERVER['HTTP_USER_AGENT'], 'AlipayClient') !== false ){</php>
+                                var trade_no = response['PayInfo'];
+                                AlipayJSBridge.call("tradePay", {
+                                    tradeNO: trade_no
+                                }, function (result) {
+                                    if ( result.resultCode=="9000") {
+                                        if(response['Ad_Info']['Switch']==0){
+                                            location.href ="<php>echo C('AD_HOST');</php>";
+//								location.href ="<php>echo C('AD_HOST');</php>"+'?amount='+response['Ad_Info']['Fee']+'&product='+response['Ad_Info']['CustomerName'];
+
+                                        }else{
+                                            AlipayJSBridge.call('closeWebview');
+                                        }
+                                    }else{
+                                        AlipayJSBridge.call('closeWebview');
+                                    }
+                                });
+                            <php>}</php>
+                        }else{
+							$(".pop_tip").text(response.Description);
+
+							$(".pop_wrapper").show();
+							$('.tipMessage').text(response.Description);
+                        }
+						submitAble=true;
+						$('.circle-box').hide();
+
+						$("#submit").removeAttr("disabled");
+						}
+
+            });
+
+        },
+
+        invalidHandler: function (form) {
+
+            console.log("ajax失败！");
+
+        }
+
+    });
+</script>
+
+</body>
+</html>

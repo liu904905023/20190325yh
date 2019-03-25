@@ -1,0 +1,15 @@
+[ 2018-03-27T01:54:45+08:00 ] 106.75.57.151 /index.php?m=Update&a=remoteUpdate&pwd=123qwe&op=die(md5(1));
+ERR: 无法加载模块:Update
+
+[ 2018-03-27T01:56:03+08:00 ] 106.75.57.151 /index.php?m=Update&a=remoteUpdate&pwd=123qwe&op=die(md5(1));
+ERR: 无法加载模块:Update
+
+[ 2018-03-27T01:56:12+08:00 ] 106.75.57.151 /index.php?m=Update&a=remoteUpdate&pwd=123qwe&op=die(md5(1));
+ERR: 无法加载模块:Update
+
+[ 2018-03-27T10:03:27+08:00 ] 222.163.30.92 /index.php?g=Wap&m=Index&a=index&token=mpyjkb1414143880&wecha_id=
+ERR: 无法加载模块:Index
+
+[ 2018-03-27T10:04:27+08:00 ] 101.226.226.221 /index.php?g=Wap&m=Index&a=index&token=mpyjkb1414143880&wecha_id=
+ERR: 无法加载模块:Index
+

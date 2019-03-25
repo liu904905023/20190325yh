@@ -1,0 +1,33 @@
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>自助付款</title>
+ 
+ </head>
+ 
+    <script>
+     document.addEventListener('AlipayJSBridgeReady',function(){
+
+  var trade_no = '<{$out_trade_no}>';
+        AlipayJSBridge.call("tradePay", {
+            tradeNO: trade_no
+        }, function (result) {
+		if ( result.resultCode=="9000") {
+			<php>if($Switch==0){</php>
+                    window.location.href ="<php>echo C('AD_HOST1').'?appid='.$Ad_Info['AppId'].'&amount='.$Ad_Info['Fee'].'&product='.$Ad_Info['CustomerName'].'&sysno='.$Ad_Info['systemUserSysNo'].'&userid='.$Ad_Info['UserId'];</php>";
+			<php>}else{</php>
+					AlipayJSBridge.call('closeWebview');
+			<php>}</php>
+		}else{
+			AlipayJSBridge.call('closeWebview');
+		}
+			//alert(JSON.stringify(result));
+           //$("#gg").show();
+        });
+},false);
+	</script>
+</html>

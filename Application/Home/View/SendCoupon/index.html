@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>领券消息</title>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <style>
+        body, p { margin: 0px; padding: 0px; }
+        body { width: 100%; height: 100%; overflow: hidden; background: #eee; }
+        a { text-decoration: none; }
+        .down { width: 80%; margin-left: 10%; background: #bababa; padding: 10px 0; font-size: 18px; font-weight: 400; line-height: 1.4; border: none; border-radius: 6px; position: absolute; text-align: center; color: #fff; margin-top: 80px; margin-bottom: 30px; }
+        .close { text-align: center; color: #fff; padding: 3px 10px; position: absolute; top: 20px; left: 20px; border: 1px solid #fff; border-radius: 2px; }
+        .big-bg p { width: 80%; margin: 0 auto; padding-top: 50px; }
+        .left { position: relative; }
+        .left p img { width: 100%; opacity: 0.5; }
+        img { margin: 0px auto 0 auto; height: 120px; display: block; padding-top: 5px; }
+        h1 { font-size: 30px; text-align: center; padding: 0px; margin: 60px 0 20px 0; width: 100%; }
+        h1.fc1 { color: #8bc34a; }
+        h1.fc2 { color: #ed6639; }
+        h3 { text-align: center; padding: 0px; margin: 0px; font-size: 22px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+<php>if($list['Code']==0){</php>
+    <div class="show_succ">
+        <h1 class="fc1">领取成功</h1>
+        <img src="__PUBLIC__/assets/images/sendStock/ico_succeed.png">
+    </div>
+<php>}else{</php>
+    <div class="show_defe">
+        <h1 class="fc2"><{$list['Data']['m_values']['err_code_des']}></h1>
+        <img src="__PUBLIC__/assets/images/sendStock/ico_defeated.png">
+    </div>
+<php>}</php>
+    <button class="down" type="button" onclick="aaa()">关闭</button>
+</body>
+<script>
+function aaa(){
+	WeixinJSBridge.call( 'closeWindow' );
+}
+</script>

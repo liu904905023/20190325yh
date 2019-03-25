@@ -1,0 +1,58 @@
+html, body {
+    /*height: 100%;*/
+    font-size: 62.5%;
+    padding-bottom: 70px;
+    overflow-x: hidden;
+    /*overflow-y: auto*/
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    font-family: "黑体", "Microsoft YaHei", "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+    color: #6C6C6C;
+    background: #EBEBEB;
+    -webkit-text-size-adjust: none;
+
+}
+
+header, nav, article, section, aside, footer, div, p, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, form, input, textarea, strong, table, td, tr, th {
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol, li {
+    list-style-type: none;
+}
+
+input, select {
+    vertical-align: middle;
+    outline: none;
+}
+
+img, input {
+    border: none;
+}
+
+button {
+    border: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+i {
+    font-style: normal;
+}
+
+
+
+
+
+
+
+
+
+

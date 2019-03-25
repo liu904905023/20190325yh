@@ -1,0 +1,68 @@
+<include file="EFuliIndex:Efuliheader"/>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="swiper-container swiper-container-horizontal">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="http://www.yunlaohu.cn">
+                            <img src="__PUBLIC__/newEfuli/img/banner.jpg" alt=""></a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="__PUBLIC__/newEfuli/img/banner.jpg" alt=""></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row icon">
+        <a href="https://api.dsyhj.cn/cardfast?uid=1019388023889985536">
+            <div class="col-xs-3">
+                <img src="__PUBLIC__/newEfuli/img/createIcon.png" alt="">
+                <p>信用卡申办</p>
+            </div>
+        </a>
+		<div class="col-xs-3">
+			<img src="__PUBLIC__/newEfuli/img/loanIcon.png" alt="">
+			<p>贷款</p>
+		</div>
+        <a href="https://fuli.bianxianmao.com?app?app?appKey=9e8b1f0fdd084256aa00834b2e2c11c4&appType=weixin&appEntrance=1">
+            <div class="col-xs-3">
+                <img src="__PUBLIC__/newEfuli/img/welfareIcon.png" alt="">
+                <p>福利社</p>
+            </div>
+        </a>
+        <a href="http://cpc.tuanai.com/ad?id=62">
+            <div class="col-xs-3">
+                <img src="__PUBLIC__/newEfuli/img/discountIcon.png" alt="">
+                <p>周边优惠</p>
+            </div>
+        </a>
+    </div>
+    <div class="row" id="typeImg">
+    <volist name="data" id ="vo" offset="0" length='4'>
+        <div class="wrap" onclick="window.location.href='__APP__/Intel/EFuliPay<php>echo ('?'.$_SERVER['QUERY_STRING'].'&SysNo=');</php><{$vo.SysNo}>'">
+            <!--<div class="wrap" onclick="window.location.href=<php>echo ('http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'].'&SysNo=');</php><{$vo.SysNo}>">-->
+            <div class="col-xs-12 pay">
+                <div class="stamp">
+                    <div class="par">
+                        <div class="pad">
+                            <sub class="sign">￥</sub>
+                            <span><{$vo.Money}></span>
+                            <sub>支付宝现金券</sub>
+                        </div>
+                        <p>单笔交易满<{$vo.Money}>元使用</p>
+                        <p>有效期：兑换之日起 90 天内</p>
+                    </div>
+                    <div class="copy"></div>
+                </div>
+            </div>
+            <div class="col-xs-12 clearfix">
+                <p class="price">售价：<span>￥ <{$vo.Field_One}></span></p>
+            </div>
+            <input type="hidden" value="<{$vo.SysNo}>">
+        </div>
+</volist>
+</div>
+    <include file="EFuliIndex:Efulifooter"/>

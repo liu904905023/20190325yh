@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>翼惠微信支付测试页面</title>
+</head>
+<script src="../../../../WWW/web1/Public/assets/js/jquery.validate.min.js"></script>
+<script src="__PUBLIC__/js/jquery-1.7.2.js"></script>
+<style>
+    body {
+        margin: auto;
+        border: solid 1px #000;
+    }
+
+    input {
+        display: block;
+        margin: 5% 0;
+        width: 80%;
+        height: 20%;
+        font-size: 600%;
+        text-align: center;
+    }
+</style>
+<body>
+
+<div>
+<form method='POST' id="searchform" name="searchform" action='__APP__/Isv/jsapi1'>
+    <input name="fee" id="fee" value='0.01' type="text">
+    <input value="翼惠通道" id="submit" type="submit" onclick="checkaction();" >
+ </form>
+</div>
+<script>
+
+function checkaction(){ 
+    document.searchform.action="/index.php/Isv/jsapi1"; 
+    searchform.submit(); 
+} 
+//    $('#submit').click(function () {
+//        $.ajax({
+//            type: "post",
+//            url: "/index.php/Weixin/index",
+//            data: {
+//                fee: $('#fee').val()
+//            },
+//            async: false,
+//            success: function (data) {
+//
+//                if (data.Code == 0) {
+////                                      alert(data.token_id);return false;
+////                                  window.location.href = "http://web.yunlaohu.cn/index.php/Wft/weixin?token_id="+data.token_id;//银行通道
+//                    window.location.href = "http://web.yunlaohu.cn/index.php/Weixin/weixin?token_id=" + data.token_id;//翼惠通道
+//                } else {
+//
+//                }
+//
+//            },
+//            error: function () {
+//                console.log("error");
+//            }
+//
+////        })
+////    })
+//    $('#submit1').click(function () {
+//        $.ajax({
+//            type: "post",
+//            url: "/index.php/Weixin/index",
+//            data: {
+//                fee: $('#fee').val()
+//            },
+//            async: false,
+//            success: function (data) {
+//
+//                if (data.Code == 0) {
+////                                      alert(data.token_id);return false;
+//                    window.location.href = "http://web.yunlaohu.cn/index.php/Wft/weixin?token_id=" + data.token_id;//银行通道
+////                                      window.location.href = "http://web.yunlaohu.cn/index.php/Weixin/weixin?token_id="+data.token_id;//翼惠通道
+//                } else {
+//
+//                }
+//
+//            },
+//            error: function () {
+//                console.log("error");
+//            }
+//
+//        })
+//    })
+
+</script>
+</body>
+</html>

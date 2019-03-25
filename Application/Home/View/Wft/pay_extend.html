@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+	    <meta name="format-detection" content="telephone=no">
+
+	    <title>确认支付</title>
+
+	    <link rel="stylesheet" href="__PUBLIC__/assets/images/Ad/css/spay_scan.css">
+	    <style>
+	    	body { background: #fff; }
+	    	.bg_wt{margin-bottom: 0;}
+	    	.yw_money { padding: 3rem 0 0 0; font-size: 3rem; color: #01A0EA; }
+	    	.yw_money span { font-size: 5rem; }
+	    	.codeimg { padding: 1rem 6rem 0 6rem; }
+	    	.codeimg p { text-align: center; font-size: 2rem; }
+	    	.btn_confirm { text-align: center; padding: 4rem 0 0 0; }
+	    	.btn_confirm a { border-radius: 10rem; margin:0 6rem; display: block; padding: 1.1rem 4rem; background: #01A0EA; color: #fff; font-size: 2rem; text-decoration: none; }
+	    </style>
+
+		
+
+	</head>
+
+	<body>
+
+	    <div class="layout-flex">
+
+	    	<div class="bg_wt">
+
+	    		<div class="yw_money">
+	    			￥<span><php>echo fee2yuan($total_fee);</php></span>元
+	    		</div>
+	    		<div class="codeimg">
+	    			<img src='<{$Qrcode_Url}>' alt="">	    	
+	    			<p>长按识别二维码支付</p>
+	    		</div>
+
+	    		<div class="btn_confirm">
+	    			<a id="finish" onclick="pay()">确认支付</a>
+	    		</div>
+
+	    	</div>
+
+		    <div class="yh_copyright">
+		    	由 <span class="copyright__brand"></span> 提供服务支持
+		    </div>
+
+	    </div>
+
+	</body>
+	<script>
+	function pay(){
+					WeixinJSBridge.invoke('getBrandWCPayRequest',{
+                        "appId" : '<{$appId}>', //公众号名称，由商户传入
+						"timeStamp" : '<{$timeStamp}>', //时间戳
+						"nonceStr" : '<{$nonceStr}>', //随机串
+						"package" : '<{$package}>',//扩展包
+						"signType" : '<{$signType}>', //微信签名方式:1.sha1
+						"paySign" : '<{$paySign}>' //微信签名
+                    },function(res){
+                        if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+							<php>if($callback){</php>
+								location.href ="<{$callback}>";
+							<php>}else{</php>
+								WeixinJSBridge.call('closeWindow');
+							<php>}</php>
+						}else{
+//														alert("错误代码："+res.err_code+"\n错误信息:"+res.err_desc+"\n错误信息1:"+res.errMsg);
+
+							if(res.err_code==2){
+							alert('支付被拦截,长按二维码完成支付!');
+							}else{
+								<php>if($callback){</php>
+									location.href ="<{$callback}>";
+								<php>}else{</php>
+	//								WeixinJSBridge.call('closeWindow');
+								<php>}</php>
+							}
+						}
+                    });
+	}
+
+
+	</script>
+
+</html>

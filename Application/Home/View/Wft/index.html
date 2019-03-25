@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>微信安全支付</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<style type="text/css">
+body{padding: 0;margin:0;background-color:#eeeeee;font-family: '黑体';}
+.pay-main{background-color: #4cb131;padding-top: 20px;padding-left: 20px;padding-bottom: 20px;}
+.pay-main img{margin: 0 auto;display: block;}
+.pay-main .lines{margin: 0 auto;text-align: center;color:#cae8c2;font-size:12pt;margin-top: 10px;}
+.tips .img{margin: 20px;}
+.tips .img img{width:20px;}
+.tips span{vertical-align: top;color:#ababab;line-height:18px;padding-left: 10px;padding-top:0px;}
+.action{background:#4cb131;padding: 10px 0;color:#ffffff;text-align: center;font-size:14pt;border-radius: 10px 10px; margin: 15px;}
+.action:focus{background:#4cb131;}
+.action.disabled{background-color:#aeaeae;}
+.footer{position: absolute;bottom:0;left:0;right:0;text-align: center;padding-bottom: 20px;font-size:10pt;color:#aeaeae;}
+.footer .ct-if{margin-top:6px;font-size:8pt;}
+</style>
+</head>
+<form action="__APP__/Wft/jsapi" id="defaultForm" method="post" class="form-horizontal">
+<div id="orderInfo">
+    <div class="ico_title">支付测试(公众号支付)__APP__<a href="__APP__/Index/index">aaaa</a></div>
+    <div class="form_wrap account">
+        <div class="form_list">
+            <span class="list_title">商户订单号：</span>
+            <span class="list_val">
+                <input name="out_trade_no" value="<php>echo rand(10000000000,99999999999);</php>" maxlength="32" size="32" placeholder="长度32">
+            </span>
+            <i>*</i><em>长度32</em>
+        </div>
+         <div class="form_list">
+            <span class="list_title">用户openid：</span>
+            <span class="list_val">
+                <input name="sub_openid" value="<{$openid}>" maxlength="64" size="32" placeholder="长度127">
+            </span>
+            <i>*</i><em>输入用户关注公众号后的openid</em>
+        </div> 
+        <div class="form_list">
+            <span class="list_title">商品描述：</span>
+            <span class="list_val">
+                <input name="body" value="测试购买商品" maxlength="64" size="32" placeholder="长度127">
+            </span>
+            <i>*</i><em>长度64</em>
+        </div>
+
+        <div class="form_list">
+            <span class="list_title">总金额：</span>
+            <span class="list_val">
+                <input name="total_fee" value="1" placeholder="单位：分">
+            </span>
+            <i>*</i><em>单位：分 整型</em>
+        </div>
+        <div class="form_list">
+            <span class="list_title">终端IP：</span>
+            <span class="list_val">
+                <input name="mch_create_ip" vtype="ip" value="127.0.0.1" maxlength="16" placeholder="长度16">
+            </span>
+            <i>*</i><em>长度16</em>
+        </div>
+
+        <div class="form_list">
+            <span class="list_title"></span>
+            <button type="submit" class="list_val submit btn btn_blue">确定</button>
+        </div>
+    </div>
+</div>
+</form>
+</body>
+</html>

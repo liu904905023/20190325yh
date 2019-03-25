@@ -1,0 +1,41 @@
+
+<div class="row icon" id="footer">
+    <div class="col-xs-4 index">
+        <a href="__APP__/EFuliIndex/index<php>echo ('?'.$_SERVER['QUERY_STRING']);</php>" title="首页">
+        <img src='__PUBLIC__/newEfuli/img/homeIcon<php>if($_SERVER["PHP_SELF"]=="/index.php/EFuliIndex/index"){echo "Active";}</php>.png' alt="">
+        <p>首页</p>
+        </a>
+    </div>
+    <div class="col-xs-4 cashCoupon">
+        <a href="__APP__/EFuliIndex/cashCoupon<php>echo ('?'.$_SERVER['QUERY_STRING']);</php>" title="现金券">
+        <img src='__PUBLIC__/newEfuli/img/cashIcon<php>if($_SERVER["PHP_SELF"]=="/index.php/EFuliIndex/cashCoupon"){echo "Active";}</php>.png' alt="">
+        <p>现金券</p>
+        </a>
+    </div>
+    <div class="col-xs-4 explain">
+        <a href="__APP__/EFuliIndex/explain<php>echo ('?'.$_SERVER['QUERY_STRING']);</php>" title="说明">
+		<img src='__PUBLIC__/newEfuli/img/explainIcon<php>if($_SERVER["PHP_SELF"]=="/index.php/EFuliIndex/explain"){echo "Active";}</php>.png' alt="">
+        <p>说明</p></a>
+    </div>
+</div>
+</div>
+<script src="__PUBLIC__/assets/js/jquery-2.0.3.min.js"></script>
+<script src="__PUBLIC__/newEfuli/js/swiper.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        // 自动播放
+        autoplay: 2000,
+        // 分页
+        pagination: '.swiper-pagination',
+        // 点击指示点切换
+        paginationClickable: true,
+        // 设置指示点 html 标签
+        paginationElement: 'li',
+        // 最后一张时，环路回第一张
+        loop: true,
+        // 手动切换后，重启 autoplay
+        autoplayDisableOnInteraction: false,
+    });
+</script>
+</body>
+</html>

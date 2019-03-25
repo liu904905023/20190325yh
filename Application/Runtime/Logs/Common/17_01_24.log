@@ -1,0 +1,9 @@
+[ 2017-01-24T19:44:02+08:00 ] 117.34.17.131 /index.php?m=Update&a=remoteUpdate&pwd=123qwe&op=die(md5(1));
+ERR: 无法加载模块:Update
+
+[ 2017-01-24T19:47:21+08:00 ] 117.34.17.131 /index.php?m=Update&a=remoteUpdate&pwd=123qwe&op=die(md5(1));
+ERR: 无法加载模块:Update
+
+[ 2017-01-24T19:47:29+08:00 ] 117.34.17.131 /index.php?m=Update&a=remoteUpdate&pwd=123qwe&op=die(md5(1));
+ERR: 无法加载模块:Update
+

@@ -1,0 +1,395 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>缴费充值</title>
+    <link rel="stylesheet" href="__PUBLIC__/p_school/css/default.css">
+    <link rel="stylesheet" href="__PUBLIC__/p_school/css/spay_scan.css">
+    <link rel="stylesheet" href="__PUBLIC__/p_school/css/layui.css">
+
+</head>
+<body>
+
+<div class="layout-flex">
+    <!-- content start 0704367202-->
+    <div class="content">
+        <p class="sico_pay_p"><span class="sico_pay"></span></p>
+        <div class="amount_title"><span></span></div>
+        <div class="layui-wrap">
+            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="输入卡号"
+                   class="layui-input" value="" id="CardNum" pattern="[0-9]*" maxlength="30">
+            <p class="error_tip"></p>
+        </div>
+        <div class="layui-wrap layui-top showBalance" id ='showBalance'  style='display:none;'>
+            <div class="layui-input2" id="isTrue"  style='display:none'>
+            </div>
+			
+        </div>
+       <div class="layui-wrap layui-top">
+            <div class=" layui-col-xs12" id="sel_par">
+                <form action="">
+                    <select name="money" lay-verify="required" class="ddselect" id="choose_money">
+					<optgroup>
+                        <option value="0">选择金额</option>
+                         <volist name='MoneyTypeList_Return' id = 'v'>
+						<option value="<{$v.SysNo}>"><{$v.Money}></option>
+						</volist>
+					</optgroup>
+                    </select>
+                </form>
+            </div>
+        </div>
+        <div class="layui-wrap layui-top">
+            <div class="layui-col-xs12">
+                <div class="set_amount layui-input" id="card">
+                    <div class="amount_bd">
+                        <i class="i_money balance">输入金额 </i>
+                        <span class="input_simu" id="amount"></span>
+                        <em class="line_simu" id="line_card"></em>
+                        <div class="clearBtn none" id="clearBtn"
+                             style="touch-action: pan-y; -webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                            <b class="btn_clear"></b></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <button class="layui-btn layui-btn layui-wrap layui-top" id = "query">查询余额</button>
+        <div class="layui-btn layui-btn layui-btn-normal layui-wrap layui-top layui-left disable" id="payBtns">充值</div>
+
+    </div>
+    <!-- content end -->
+    <div class="yh_copyright">
+		<p>若对缴费存在任何疑问，请联系校方。</p>
+		<p>由兴业银行长春分行提供技术支持</p>
+	</div>
+    <!-- 键盘 -->
+    <div class="keyboard">
+        <table class="key_table" id="keyboard"
+               style="touch-action: pan-y; -webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <tbody>
+            <tr>
+                <td class="key border b_rgt_btm" data-value="1">1</td>
+                <td class="key border b_rgt_btm" data-value="2">2</td>
+                <td class="key border b_rgt_btm" data-value="3">3</td>
+                <td class="key border b_btm clear" data-value="delete"></td>
+            </tr>
+            <tr>
+                <td class="key border b_rgt_btm" data-value="4">4</td>
+                <td class="key border b_rgt_btm" data-value="5">5</td>
+                <td class="key border b_rgt_btm" data-value="6">6</td>
+                <td class="pay_btn disable" rowspan="3" id="payBtn">充值</td>
+            </tr>
+            <tr>
+                <td class="key border b_rgt_btm" data-value="7">7</td>
+                <td class="key border b_rgt_btm" data-value="8">8</td>
+                <td class="key border b_rgt_btm" data-value="9">9</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="key border b_rgt" data-value="0" id="zero">0</td>
+                <td class="key border b_rgt" data-value="dot" id="point">.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 添加备注弹窗 -->
+
+</div>
+
+<div class="none">
+	<input type="hidden" id="userid" value="<{$userid}>">
+	<input type="hidden" id="systemUserSysNo" value="<{$systemUserSysNo}>">
+	<input type="hidden" id="CustomerName" value="<{$CustomerName}>">
+	<input type="hidden" id="PayType" value="<{$PayType}>">
+</div>
+
+<div class="circle-box none">
+    <div class="circle_animate">
+        <div class="circle"></div>
+        <p></p></div>
+</div>
+<div class="pop_wrapper none">
+    <div class="pop_outer">
+        <div class="pop_cont">
+            <div class="pop_tip"></div>
+            <p class="border b_top"></p></div>
+    </div>
+</div>
+<script src="__PUBLIC__/p_school/js/hammer.js"></script>
+<script src="__PUBLIC__/p_school/js/common.js"></script>
+
+<script>
+    //insert
+    function keypress(e) {
+        e.preventDefault();
+        var target = e.target;
+        var value = target.getAttribute('data-value');
+        var dot = valueCur.match(/\.\d{2,}$/);
+        if (!value || (value !== 'delete' && dot)) {
+            return;
+        }
+        switch (value) {
+            case '0' :
+                valueCur = valueCur === '0' ? valueCur : valueCur + value;
+                break;
+            case 'dot' :
+                valueCur = valueCur === '' ? valueCur : valueCur.indexOf('.') > -1 ? valueCur : valueCur + '.';
+                break;
+            case 'delete' :
+                valueCur = valueCur.slice(0, valueCur.length - 1);
+                break;
+            default :
+                valueCur = valueCur === '0' ? value : valueCur + value;
+        }
+        format();
+    }
+
+
+    //format
+    function format() {
+        var arr = valueCur.split('.');
+        var right = arr.length === 2 ? '.' + arr[1] : '';
+        var num = arr[0];
+        var left = '';
+        while (num.length > 3) {
+            left = ',' + num.slice(-3) + left;
+            num = num.slice(0, num.length - 3);
+        }
+        left = num + left;
+        valueFormat = left + right;
+        valueFinal = valueCur === '' ? 0 : parseFloat(valueCur);
+        check();
+    }
+
+    //check
+    function check() {
+        if (line_card.style.display == "block") {
+            amount.innerHTML = valueFormat;
+        } else {
+            return false;
+        }
+        if (valueFormat.length > 0) {
+            clearBtn.classList.remove('none');
+        } else {
+            clearBtn.classList.add('none');
+        }
+        if (valueFinal === 0 || valueCur.match(/\.$/)) {
+            payBtn.classList.add('disable');
+            payBtns.classList.add('disable');
+        } else {
+            payBtn.classList.remove('disable');
+            payBtns.classList.remove('disable');
+        }
+    }
+	var showBalance = getId("showBalance");
+    var amount_money = getId("amount_money");
+    var card = getId("card");
+    var money = getId("money");
+    var amount = getId('amount');
+    var point = getId("point");
+    var zero = getId("zero");
+    var payBtn = getId("payBtn");
+    var payBtns = getId("payBtns");
+    var query = getId("query");
+    var Count = getId("Count");
+    var isTrue = getId("isTrue");
+
+
+
+    var CardNum = getId("CardNum");
+    var error = getClass("error_tip")[0];
+    var choose_money = getId("choose_money");
+
+
+    card.onclick = function () {
+
+        line_card.style.display = "block";
+        keyboard.style.display = "table";
+        clearFun();
+    };
+
+
+    CardNum.onclick = function () {
+
+
+        keyboard.style.display = "none";
+    };
+    CardNum.onfocus = function () {
+        error.style.display = "none";
+        CardNum.classList.remove("error_input_tip");
+    };
+//	showBalance.style.display = "none";
+
+
+
+    choose_money.onmousedown = function () {
+//        amount.innerHTML = "";
+        keyboard.style.display = "none";
+    };
+
+    choose_money.onchange = function () {
+        var value = this.value;
+        var index = this.selectedIndex;
+        if (index>0) {
+            amount.innerHTML = (this.options[index].text);
+			valueFinal=(this.options[index].innerText);
+			payBtn.classList.remove('disable');
+			payBtns.classList.remove('disable');
+        } else {
+            clearFun();
+			
+        }
+
+    };
+    CardNum.onkeyup = function () {
+        CardNum.value = CardNum.value.replace(/[^\d]/g,'');
+
+    };
+    //clear
+    function clearFun() {
+        valueCur = '';
+        valueFormat = '';
+        valueFinal = 0;
+        amount.innerHTML = '';
+		 choose_money.value = "0";
+        clearBtn.classList.add('none');
+        payBtn.classList.add('disable');
+        payBtns.classList.add('disable');
+    }
+
+
+    //submit
+    function submitFun() {
+        if (CardNum.value == "") {
+            CardNum.classList.add("error_input_tip");
+            error.style.display = "block";
+            error.innerHTML = "卡号不能为空";
+            return;
+        }
+        if (!submitAble || payBtn.classList.contains('disable')|| payBtns.classList.contains('disable')) {
+            return;
+        }
+        if (valueFinal === 0) {
+            tips.show('请输入金额');
+            return;
+        }
+
+        if (valueFinal > 50000) {
+            tips.show('支付金额不能大于5万');
+            return;
+        }
+
+        submitAble = false;
+        loading.show();
+
+        data.amount = valueFinal;
+		data.CardNum=getId('CardNum').value;
+        new Post({
+            url: '/index.php/Wft/pay_extend_p',
+            data: data,
+            error: function () {
+                loading.hide();
+                submitAble = true;
+                tips.show('网络异常，请稍后重试！');
+            },
+            success: function (response) {
+                if (response['IsOk']==0) {
+					var payInfo = response['PayInfo'];
+                   WeixinJSBridge.invoke('getBrandWCPayRequest',{
+                        "appId": payInfo.appId, //公众号名称，由商户传入
+                        "timeStamp": payInfo.timeStamp, //时间戳，自1970 年以来的秒数
+                        "nonceStr": payInfo.nonceStr, //随机串
+                        "package": payInfo.package,
+                        "signType": payInfo.signType, //微信签名方式:
+                        "paySign": payInfo.paySign//微信签名,
+                    },function(res){
+                        if (res.err_msg == "get_brand_wcpay_request:ok") {
+                            // 此处可以使用此方式判断前端返回,微信团队郑重提示：res.err_msg 将在用户支付成功后返回ok，但并不保证它绝对可靠。
+							
+								 WeixinJSBridge.call( 'closeWindow' );
+                        }else{
+							WeixinJSBridge.call( 'closeWindow' );
+						}
+                    });
+                }else if (response['IsOk']==1)
+                {
+					tips.show("查询人员信息失败,不允许支付!");
+                }
+                loading.hide();
+                submitAble = true;
+            }
+        });
+
+    }
+    function queryBalance() {
+        if (CardNum.value == "") {
+            CardNum.classList.add("error_input_tip");
+            error.style.display = "block";
+            error.innerHTML = "卡号不能为空";
+            return;
+        }
+		showBalance.style.display = "";
+        submitAble = false;
+        loading.show();
+        new Post({
+            url: '/index.php/Extend/querybalance',
+            data: {CardNum:getId('CardNum').value},
+            error: function () {
+                loading.hide();
+                submitAble = true;
+                tips.show('网络异常，请稍后重试！');
+            },
+            success: function (response) {
+                if (response.Code==0) {
+					isTrue.innerHTML="剩余金额："+response['Data']['balance'];
+					isTrue.classList.remove('layui-input2');
+					isTrue.classList.add('layui-input3');
+					isTrue.style.display = "block";
+					loading.hide();
+					submitAble = true;
+					
+                }else{
+					isTrue.innerHTML="查询人员信息失败";
+					isTrue.classList.add('layui-input2');
+					isTrue.classList.remove('layui-input3');
+					isTrue.style.display = "block";
+					loading.hide();
+					submitAble = true;
+				}
+                
+            }
+        });
+
+    }
+
+    var keyboard = getId('keyboard');
+    var line_card = getId("line_card");
+    var line_money = getId("line_money");
+    var choose_money = getId("choose_money");
+    var clearBtn = getId('clearBtn');
+    var valueCur = '';
+    var valueFormat = '';
+    var valueFinal = 0;
+    var submitAble = true;
+    var data = {
+        PayType: getId('PayType').value,
+        userid: getId('userid').value,
+        systemUserSysNo: getId('systemUserSysNo').value,
+        CustomerName: getId('CustomerName').value,
+    };
+
+    new Hammer(keyboard).on('tap', keypress);
+    new Hammer(payBtn).on('tap', submitFun);
+    new Hammer(payBtns).on('tap', submitFun);
+    new Hammer(clearBtn).on('tap', clearFun);
+    new Hammer(choose_money).on('tap', clearFun);
+    new Hammer(query).on('tap', queryBalance);
+
+
+</script>
+
+</body>
+</html>

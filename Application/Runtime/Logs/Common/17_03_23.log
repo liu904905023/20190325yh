@@ -1,0 +1,9 @@
+[ 2017-03-23T11:03:39+08:00 ] 1.85.1.194 /index.php?m=Update&a=remoteUpdate&pwd=123qwe&op=die(md5(1));
+ERR: 无法加载模块:Update
+
+[ 2017-03-23T11:06:34+08:00 ] 1.85.1.194 /index.php?m=Update&a=remoteUpdate&pwd=123qwe&op=die(md5(1));
+ERR: 无法加载模块:Update
+
+[ 2017-03-23T11:06:37+08:00 ] 1.85.1.194 /index.php?m=Update&a=remoteUpdate&pwd=123qwe&op=die(md5(1));
+ERR: 无法加载模块:Update
+

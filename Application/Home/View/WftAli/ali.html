@@ -1,0 +1,27 @@
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+ </head>
+
+    <script>
+     document.addEventListener('AlipayJSBridgeReady',function(){
+
+  var trade_no = '<{$out_trade_no}>';
+        AlipayJSBridge.call("tradePay", {
+            tradeNO: trade_no
+        }, function (result) {
+			if ( result.resultCode=="9000") {
+					
+			}else{
+//				AlipayJSBridge.call('closeWebview');
+			}
+			
+        });
+},false);
+
+	</script>
+</html>

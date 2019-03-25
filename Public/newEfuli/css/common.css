@@ -1,0 +1,206 @@
+/* 通知导航 start */
+.noticePath {
+    margin: 2px 0;
+}
+.noticePath img {
+    width: 15px;
+}
+#scrollText {
+    margin-top: 0.4rem;
+    line-height: 1.5rem;
+    padding-left: 10px;
+}
+#scrollText p{
+    margin:0;
+}
+/* 通知导航 end */
+
+/* 导航 start */
+.icon {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.icon img {
+    width: 40%;
+}
+
+.icon p {
+    font-size: 1rem;
+    color: #9A9A9A;
+    margin:5px 0;
+}
+/* 导航 end */
+
+/* 轮播图 start */
+.swiper-container {
+    height: 110px;
+    margin: 20px auto;
+    display: flex;
+}
+.swiper-pagination-bullet{
+
+}
+.swiper-slide {
+    width: 500px;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    width: 100%;
+}
+
+/* 轮播图 end */
+
+/* 卡券 start */
+
+#typeImg img {
+    width:36px;
+    margin-bottom:15px;
+}
+
+.wrap {
+    padding: 10px 0 6px 0;
+    border-top: 5px solid #EBEBEB;
+}
+#payWrap .wrap{
+    border-top:0;
+    padding-top:0;
+    margin-top:10px;
+}
+.stamp {
+    width: 100%;
+    height: 90px;
+    background: #f00;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 8px;
+    border-radius: 8px 0 0 8px;
+    box-shadow: 0 1px 5px #ccc;
+}
+
+.pad {
+    margin: 5px 0;
+    z-index: 10;
+}
+
+.price{
+    float: right;
+    color: #303030;
+    margin-bottom: 0;
+    line-height: 18px;
+}
+
+.price span{
+    color: #f00;
+}
+
+.stamp .par {
+    float: left;
+    width: 70%;
+    text-align: left;
+    padding-left: 3%;
+}
+
+
+.stamp .par p {
+    color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+    margin-bottom: 5px;
+}
+
+.stamp .par span {
+    font-size: 2.3rem;
+    color: #fff;
+    margin-right: 5px;
+    line-height: 25px;
+}
+
+.stamp .par .sign {
+    font-size: 2rem;
+}
+
+.stamp .par sub {
+    position: relative;
+    top: 0;
+    color: rgb(255, 255, 255);
+}
+
+.stamp .copy{
+    width:100%;
+    height:90px;
+    background: url("../img/rightPath.png") no-repeat right center;
+    -webkit-background-size: contain;
+    background-size: contain;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+
+.stamp02:before {
+    background-color: #FF0000;
+}
+
+/* 卡券 end */
+
+/* 底部导航 start*/
+#footer {
+    position:fixed;
+    width:100%;
+    left:0px;
+    bottom:0px;
+    background: #fff;
+    border-top:5px solid #EBEBEB;
+    padding-top:5px;
+    margin-left:0;
+}
+
+#footer img {
+    width: 26%;
+}
+
+#footer p {
+    margin-top: 0;
+}
+
+#footer a {
+    color: #9A9A9A;
+    text-decoration: none;
+}
+/* 底部导航 end*/
+
+
+/* 说明页*/
+.cashBanner img {
+    width: 100%;
+}
+
+.explainText{
+    margin-top:10px;
+}
+.explainText img{
+    width:100%;
+}
+.explainText p{
+    color: #FF0000;
+}
+.buyinfo { color: #333 }
